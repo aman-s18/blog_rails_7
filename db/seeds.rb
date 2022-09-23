@@ -6,6 +6,13 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
-50.times {
-    Post.create(title: Faker::Dessert.variety, description: Faker::Lorem.paragraph)
+5.times {
+  User.create(email: "#{Faker::Name.first_name.downcase}@blog.com", password: 123456)
 }
+
+User.pluck(:id).each do |user_id|
+  10.times {
+    Post.create(title: Faker::Dessert.variety, description: Faker::Lorem.paragraph, user_id: user_id)
+  }
+end
+puts "Seed completed"
