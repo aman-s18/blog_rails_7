@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get :search, to: "search#index"
   get 'comments/create'
   get 'comments/destroy'
   get 'create/destroy'
