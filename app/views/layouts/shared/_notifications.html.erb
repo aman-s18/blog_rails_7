@@ -1,0 +1,50 @@
+<% if current_user %>
+  <li class="nav-item dropdown">
+    <a
+      class="nav-link dropdown-toggle"
+      href="#"
+      id="navbarDropdown"
+      role="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <span class="badge rounded-pill bg-danger">
+          <%= @unread.count >= 9 ? "9+" : @unread.count %>&nbsp;&nbsp;<i class="fa-solid fa-bell"></i>
+        <span class="visually-hidden">unread messages</span>
+      </span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+      <% if @unread.count > 0 %>
+        <h6  class="span-read"><span>Unread</span></h6>
+        <% @unread.each do |notification| %>
+          <%= render "layouts/shared/notification", notification: notification %>
+        <%end%>
+      <% elsif (@read.count + @unread.count) == 0 %>
+        <li class="dropdown-item">
+          No notification yet.
+        </li>
+      <%end%>
+      <%if @read.count > 0 %>
+        <h6  class="span-read"><span>Read</span></h6>
+        <% @read.each do |notification| %>
+          <%= render "layouts/shared/notification", notification: notification %>
+        <%end%>
+      <%end%>
+    </ul>
+  </li>
+<%end%>
+
+<style>
+  h6.span-read {
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid #000; 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+  } 
+
+  h6.span-read span { 
+    background:#fff; 
+    padding:0 10px; 
+  }
+</style>

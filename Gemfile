@@ -72,3 +72,4 @@ group :test do
 end
 gem 'faker'
 gem 'devise'
+gem "noticed", "~> 1.6"
