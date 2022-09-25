@@ -64,15 +64,16 @@ group :development do
   # gem "spring"
 end
 
-group :test do
+group :development, :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "bullet", "~> 7.0"
 end
 gem 'faker'
 gem 'devise'
 gem "noticed", "~> 1.6"
 gem "ransack", "~> 3.2"
-
 gem "friendly_id", "~> 5.4"
+gem "activerecord-import", "~> 1.4"

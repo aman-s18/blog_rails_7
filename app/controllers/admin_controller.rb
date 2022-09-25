@@ -4,7 +4,7 @@ class AdminController < ApplicationController
   end
 
   def posts
-    @posts = Post.all.includes(:user, :comments)
+    @posts = Post.includes(:user)
   end
 
   def comments
@@ -14,7 +14,7 @@ class AdminController < ApplicationController
   end
 
   def show_post
-    @post = Post.includes(:user, :comments).find(params[:id])
+    @post = Post.includes(:user).find(params[:id])
   end
 
 end
