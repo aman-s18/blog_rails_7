@@ -1,0 +1,42 @@
+<div class="container">
+  <h1 class="text-center mt-4">Administrator</h1>
+  <%= render 'admin/nav_links' %>
+
+  <div class="text-center mt-4">
+    <div class="btn-group">
+      <%= link_to "Edit", edit_post_path(@post), class: "btn btn-warning me-1" %> 
+      <%= button_to "Destroy", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    </div>
+  </div>
+  <div class="row mt-1">
+    <p>
+      <strong>Title:</strong> <%= @post.title %>
+    </p>
+  </div>
+  <div class="row mt-1">
+    <p>
+      <strong>Title:</strong> <%= @post.title %>
+    </p>
+  </div>
+  <div class="row mt-1">
+    <p>
+      <strong>Views:</strong> <%= @post.views %>
+    </p>
+  </div>
+  <div class="row mt-1">
+    <p>
+      <strong>Author:</strong>
+       <%= "| #{@post.user.email} | #{@post.user.name} |" %>
+    </p>
+  </div>
+  <div class="row mt-1">
+    <p>
+      <strong>Description:</strong> <%= @post.description %>
+    </p>
+  </div>
+  <div class="row mt-1">
+    <p>
+      <strong>Comments:</strong> <%= pluralize(@post.comments.count, "view") %>
+    </p>
+  </div>
+</div>
