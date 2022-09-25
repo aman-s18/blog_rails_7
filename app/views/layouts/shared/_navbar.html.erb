@@ -24,7 +24,8 @@
           <a class="nav-link" href="<%= posts_path %>">Posts</a>
         </li>
       </ul>
-      <ul class="navbar-nav"> 
+      <ul class="navbar-nav">
+        <%= render 'search/form'%>
         <%= render "layouts/shared/notifications" %>
         <%= render "user/session_manager" %>
       </ul>
