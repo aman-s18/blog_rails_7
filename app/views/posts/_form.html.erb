@@ -17,6 +17,12 @@
   </div>
 
   <div>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.select :category_id, options_for_select(Category.order(name: :asc)
+        .collect{|cat| [cat.name, cat.id ]}) %>
+  </div>
+
+  <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.rich_text_area :description %>
     <%= form.hidden_field :user_id, value: current_user.id %>

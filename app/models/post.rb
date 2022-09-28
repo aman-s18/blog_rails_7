@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   extend FriendlyId
   validates :title, presence: true, length: { minimum: 5, maximum: 50 }
   belongs_to :user
+  belongs_to :category
   has_many :comments, dependent: :destroy
   has_rich_text :description
   has_one :content, class_name: "ActionText::RichText", as: :record, dependent: :destroy

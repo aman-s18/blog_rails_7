@@ -4,6 +4,7 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col"><%= sort_link(@query, :title, "Title", default_order: :asc) %></th>
+        <th scope="col"><%= sort_link(@query, :category_name, "Category", default_order: :asc) %></th>
         <th scope="col"><%= sort_link(@query, :user_email, "Email", default_order: :asc) %></th>
         <th scope="col"><%= sort_link(@query, :user_name, "Users", default_order: :asc) %></th>
       </tr>
@@ -12,6 +13,7 @@
       <% @posts.each do |post| %>
         <tr>
           <td><%= link_to post.title, post %></th>
+          <td><%= link_to post.category.name, post.category %></th>
           <td><%= link_to post.user.email %></td>
           <td><%= link_to post.user.full_name %></td>
         </tr>

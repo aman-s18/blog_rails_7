@@ -23,6 +23,9 @@
         <li class="nav-item">
           <a class="nav-link" href="<%= posts_path %>">Posts</a>
         </li>
+        <li class="nav-item">
+          <%= render 'categories/categories', categories: @nav_categories %>
+        </li>
       </ul>
       <ul class="navbar-nav">
         <%= render 'search/form'%>

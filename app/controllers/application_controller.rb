@@ -1,9 +1,18 @@
 class ApplicationController < ActionController::Base
   before_action :set_notifications, if: :current_user
   before_action :set_query!
+  before_action :set_categories
 
   def set_query!
     @query = Post.ransack(params[:q])
+  end
+
+  def set_categories
+    @nav_categories = Category.display_in_nav.order(name: :asc)
+  end
+
+  def is_admin?
+    redirect_to root_path, alert: "You are not authorized to do that!" unless current_user&.admin?
   end
   
   private

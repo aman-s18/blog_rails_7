@@ -6,12 +6,13 @@ require 'benchmark'
 posts = []
 comments = []
 elapsed = Benchmark.measure do
-  user =  User.first_or_create!(email: "user@blog.com",
+  user =  User.create!(email: "user@blog.com",
                                 password: "password",
+                                password_confirmation: "password",
                                 role: User.roles["user"],
                                 first_name: "Demo",
                                 last_name: "User")
-  Address.first_or_create!(
+  Address.find_or_create_by!(
     street: Faker::Address.street_address,
     city: Faker::Address.city,
     state: Faker::Address.state,
@@ -20,13 +21,14 @@ elapsed = Benchmark.measure do
     user: user
   )
 
-  admin =  User.first_or_create!(email: "user@blog.com",
+  admin =  User.create(email: "admin@blog.com",
                                  password: "password",
+                                 password_confirmation: "password",
                                  role: User.roles["admin"],
                                  first_name: "Demo",
                                  last_name: "Admin"
                                 )
-  Address.first_or_create!(
+  Address.find_or_create_by!(
                             street: Faker::Address.street_address,
                             city: Faker::Address.city,
                             state: Faker::Address.state,
@@ -34,12 +36,17 @@ elapsed = Benchmark.measure do
                             country: Faker::Address.country,
                             user: admin
                           )
+  category = Category.find_or_create_by!(name: "Uncategorized", display_in_nav: true)
+  Category.find_or_create_by!(name: "Cars", display_in_nav: false)
+  Category.find_or_create_by!(name: "Bikes", display_in_nav: true)
+  Category.find_or_create_by!(name: "Boats", display_in_nav: true)
   User.pluck(:id).each do |user_id|
     10.times {
       post = Post.new(
               title: "#{Faker::Dessert.variety} #{rand}",
               description: Faker::Lorem.paragraph,
-              user_id: user_id
+              user_id: user_id,
+              category: category
             )
       posts << post
       puts "#{post.title} is created!"
