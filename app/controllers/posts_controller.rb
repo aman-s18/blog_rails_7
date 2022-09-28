@@ -4,7 +4,11 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.includes(:user, :rich_text_description).order(created_at: :desc)
+    if params[:my_post] == "true"
+      @posts = current_user.posts.includes(:user, :rich_text_description).order(created_at: :desc)
+    else
+      @posts = Post.includes(:user, :rich_text_description).order(created_at: :desc)
+    end
   end
 
   # GET /posts/1 or /posts/1.json

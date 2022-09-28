@@ -9,6 +9,7 @@ class Comment < ApplicationRecord
 
   private
     def notify_recipient
+      return if post.user == user
       CommentNotification.with(comment: self, post: post).deliver(post.user)
     end
 

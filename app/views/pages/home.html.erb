@@ -2,3 +2,16 @@
   <h1>Welcome to my Personal Page</h1>
   <p><%= link_to "About Me", pages_about_path, class: "btn btn-secondary" %>&nbsp;&nbsp;<%= link_to "Posts", posts_path, class: "btn btn-primary" %></p>
 </div>
+<% if current_user %>
+  <div class="container card mt-4">
+    <h2>User Info</h2>
+    <h3><%= current_user.full_name %></h1>
+    <ul>
+      <li><strong>Street:</strong>  <%= current_user.address.street.titleize %></li>
+      <li><strong>City:</strong>  <%= current_user.address.city.titleize %></li>
+      <li><strong>State:</strong>  <%= current_user.address.state.titleize %></li>
+      <li><strong>Zip/Pin:</strong>  <%= current_user.address.zip_pin %></li>
+      <li><strong>Country:</strong>  <%= current_user.address.country.titleize %></li>
+    </ul>
+  </div>
+<% end %>

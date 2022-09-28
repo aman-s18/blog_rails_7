@@ -7,11 +7,12 @@
     data-bs-toggle="dropdown"
     aria-expanded="false"
   >
-    <%= current_user&.name ? current_user.name.titleize : "Click Here"%>
+    <%= current_user&.full_name ? current_user.full_name.titleize : "Click Here"%>
   </a>
   <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
     <% if current_user %>
       <li><%= link_to "Admin", admin_path, class: "dropdown-item" if current_user.admin? %></li>
+      <li><%= link_to "My Posts", posts_path(my_post: true), class: "dropdown-item" %></li>
       <li><%= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item"%></li>
       <li><hr class="dropdown-divider" /></li>
       <li><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item"%></li>
