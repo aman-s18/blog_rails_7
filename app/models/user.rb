@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  include SubscriptionConcern
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
   has_many :posts, dependent: :destroy
@@ -8,8 +9,11 @@ class User < ApplicationRecord
   has_many :notifications, as: :recipient, dependent: :destroy
   has_one :address, dependent: :destroy, inverse_of: :user, autosave: true
   accepts_nested_attributes_for :address, allow_destroy:true
+  has_one_attached :avatar
 
   enum role: %i[user admin]
+
+  pay_customer stripe_attributes: :stripe_attributes
 
   after_initialize :set_default_role, if: :new_record?
 
@@ -43,6 +47,19 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}" rescue "Demo"
+  end
+
+  def stripe_attributes(pay_customer)
+    {
+      address: {
+        city: pay_customer.owner.city,
+        country: pay_customer.owner.country
+      },
+      metadata: {
+        pay_customer_id: pay_customer.id,
+        user_id: id # or pay_customer.owner_id
+      }
+    }
   end
 
   private

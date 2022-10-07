@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   def set_query!
     @query = Post.ransack(params[:q])
+    @portal_session = current_user.payment_processor&.billing_portal if current_user
   end
 
   def set_categories

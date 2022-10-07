@@ -1,6 +1,17 @@
 <div class="container">
   <h1>Welcome to my Personal Page</h1>
-  <p><%= link_to "About Me", pages_about_path, class: "btn btn-secondary" %>&nbsp;&nbsp;<%= link_to "Posts", posts_path, class: "btn btn-primary" %></p>
+  <p>
+    <%= link_to "About Me", pages_about_path, class: "btn btn-secondary" %>
+    <%= link_to "Posts", posts_path, class: "btn btn-primary" %>
+    <%= link_to "Buy iPhone ₹59900.00", checkout_path(
+      mode: 'payment',
+      line_items: ['price_1LqJAGSDPayZM1TyK0Azsc2V']
+    ), class: "btn btn-warning" %>
+    <%= link_to "Subscribe iPhone ₹7050/month", checkout_path(
+      line_items: ['price_1LqKbCSDPayZM1TyAqOq1yvM'],
+      payment_mode: 'subscription'
+    ), class: "btn btn-success" %>
+  </p>
 </div>
 <% if current_user %>
   <div class="container card mt-4">

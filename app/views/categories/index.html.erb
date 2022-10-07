@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <h1>Categories</h1>
-  <% if current_user.admin? %>
+  <% if current_user&.admin? %>
     <%= link_to "New category", new_category_path, class: "btn btn-primary" %>
   <%end%>
   </br>

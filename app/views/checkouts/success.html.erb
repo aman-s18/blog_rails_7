@@ -1,0 +1,11 @@
+<div class="container mt-2">
+  <h1>Success</h1>
+  <p>You just bought iPhone 12</p>
+  <h2>Your total was ₹<%= @session.amount_total.to_f / 100 %></h2>
+  <% @line_items.each do |item| %>
+    <h3>Product: <%= item.description %></h3>
+    <p><b>Price:</b> ₹<%= item.price.unit_amount.to_f / 100 %></p>
+    <% product = Stripe::Product.retrieve(item.price.product) %>
+    <%= image_tag(product.images.first, class: "img-fluid") %>
+  <%end%>
+</div>

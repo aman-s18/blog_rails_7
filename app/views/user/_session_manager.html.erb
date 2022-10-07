@@ -12,6 +12,7 @@
   <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
     <% if current_user %>
       <li><%= link_to "Admin", admin_path, class: "dropdown-item" if current_user.admin? %></li>
+      <li><%= link_to "Manage Billing", @portal_session&.url, class: "dropdown-item", target: "_blank" %></li>
       <li><%= link_to "My Posts", posts_path(my_post: true), class: "dropdown-item" %></li>
       <li><%= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item"%></li>
       <li><hr class="dropdown-divider" /></li>
