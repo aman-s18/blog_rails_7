@@ -15,6 +15,7 @@ class AdminController < ApplicationController
 
   def show_post
     @post = Post.includes(:user).find(params[:id])
+    # ahoy.track "Viewed Post", post_id: @post.id
   end
 
 end

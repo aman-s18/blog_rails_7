@@ -77,8 +77,9 @@ gem "noticed", "~> 1.6"
 gem "ransack", "~> 3.2"
 gem "friendly_id", "~> 5.4"
 gem "activerecord-import", "~> 1.4"
-
 gem "wicked", "~> 2.0"
-
 gem "stripe", "~> 7.1"
 gem "pay", "~> 5.0"
+gem "ahoy_matey", "~> 4.1"
+gem "groupdate", "~> 6.1"
+gem "chartkick", "~> 4.2"

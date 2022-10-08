@@ -18,13 +18,16 @@
           <a class="nav-link active" aria-current="page" href="<%= root_path %>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<%= pages_about_path %>">About</a>
+          <%= link_to 'About', pages_about_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<%= posts_path %>">Posts</a>
+          <%= link_to 'Posts', posts_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<%= members_dashboard_path %>">Members</a>
+          <%= link_to 'Members', members_dashboard_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Portfolio', projects_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= render 'categories/categories', categories: @nav_categories %>

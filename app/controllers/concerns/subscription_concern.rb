@@ -3,7 +3,6 @@ module SubscriptionConcern
 
   included do
     def check_subscription_status
-      byebug
       subscription = payment_processor&.subscription&.processor_subscription
       return if subscription.nil?
 

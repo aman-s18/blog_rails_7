@@ -1,0 +1,8 @@
+<div class="container mt-4">
+  <%= render @project %>
+  <div class="btn-group mt-2">
+    <%= link_to "Edit this project", edit_project_path(@project), class: 'btn btn-warning' if current_user&.admin? %>
+    <%= link_to "Back to projects", projects_path, class: 'btn btn-success' %>
+    <%= button_to "Destroy this project", @project, method: :delete, class: 'btn btn-danger' if current_user&.admin? %>
+  </div>
+</div>

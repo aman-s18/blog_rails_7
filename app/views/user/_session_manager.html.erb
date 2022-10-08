@@ -14,6 +14,7 @@
       <li><%= link_to "Admin", admin_path, class: "dropdown-item" if current_user.admin? %></li>
       <li><%= link_to "Manage Billing", @portal_session&.url, class: "dropdown-item", target: "_blank" %></li>
       <li><%= link_to "My Posts", posts_path(my_post: true), class: "dropdown-item" %></li>
+      <li><%= link_to "New Project", new_project_path, class: "dropdown-item" if current_user.admin? %></li>
       <li><%= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item"%></li>
       <li><hr class="dropdown-divider" /></li>
       <li><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item"%></li>
