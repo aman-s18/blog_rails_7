@@ -7,11 +7,11 @@
     data-bs-toggle="dropdown"
     aria-expanded="false"
   >
-    Categories
+    <%= I18n.locale.upcase %>
   </a>
   <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-    <% categories.each do |category| %>
-    <li class="dropdown-item"><%#= link_to category.name, category %></li>
-  <%end%>
+    <li><%= link_to "English", root_path(locale: :en), class: "dropdown-item" %></li>
+    <li><%= link_to "Svenska", root_path(locale: :sw), class: "dropdown-item" %></li>
+    <li><%= link_to "Russian", root_path(locale: :ru), class: "dropdown-item" %></li>
   </ul>
 </li>
