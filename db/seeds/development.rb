@@ -6,6 +6,7 @@ require 'benchmark'
 posts = []
 comments = []
 elapsed = Benchmark.measure do
+  AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
   user =  User.create!(email: "user@blog.com",
                                 password: "password",
                                 password_confirmation: "password",
